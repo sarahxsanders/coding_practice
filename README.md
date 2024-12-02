@@ -1,4 +1,4 @@
-## Hey!! Welcome to my coding_practice repo :)
+## Hey!! Welcome to my `coding_practice` repo :)
 
 My name is Sarah. I am a technical writer, and learning software development as I go.
 
