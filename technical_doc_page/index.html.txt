@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Intro to GraphQL</title>
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>Intro to GraphQL</header>
+      <a href="#What_is_GraphQL?" class="nav-link">What is GraphQL?</a>
+      <a href="#What_are_queries?" class="nav-link">What are queries?</a>
+      <a href="#What_are_mutations?" class="nav-link">What are mutations?</a>
+      <a href="#What_are_subscriptions?" class="nav-link">What are subscriptions?</a>
+      <a href="#GraphQL_vs._REST" class="nav-link">GraphQL vs. REST</a>
+      <a href="#How_to_set_up_a_simple_GraphQL_server" class="nav-link">How to set up a simple GraphQL server</a>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="What_is_GraphQL?">
+        <header><h2>What is GraphQL?</h2></header>
+        <p>
+          GraphQL is a modern way to interact with APIs (Application Programming
+          Interfaces) that allows you to request only the data you need. It was
+          developed by Facebook (Meta) and has become a popular alternative to
+          REST APIs.
+        </p>
+        <h3>Key features of GraphQL</h3>
+        <ul>
+          <li>
+            <strong>Flexible Queries</strong>: Instead of making multiple
+            requests to different API endpoints, you can request exactly the
+            data you need in a single query.
+          </li>
+          <li>
+            <strong>Strongly Typed</strong>: GraphQL APIs are schema-driven,
+            meaning the server knows exactly what data can be queried, and
+            clients know what to expect. This makes it easier to catch errors
+            early.
+          </li>
+          <li>
+            <strong>Single Endpoint</strong>: Unlike REST, which may require
+            multiple endpoints, GraphQL uses a single endpoint for all requests.
+          </li>
+        </ul>
+        <p>
+          This guide will provide an overview of some concepts, compare GraphQL
+          and REST APIs, and show an example of how to set up a simple GraphQL
+          server.
+        </p>
+      </section>
+      <section class="main-section" id="What_are_queries?">
+        <header><h2>What are queries?</h2></header>
+        <p>
+          A <strong>query</strong> is a request for data. In traditional REST
+          APIs, you usually make a request to an endpoint to fetch data. In
+          GraphQL, you can specify exactly what fields you want in the response.
+        </p>
+        <h3>How queries work</h3>
+        <ul>
+          <li>
+            You define what you want. You ask for a specific resource (like a
+            user) and the fields you need (like their name and email).
+          </li>
+          <li>
+            The server responds with exactly that data, in the format you
+            requested.
+          </li>
+        </ul>
+        <h3>Example</h3>
+        <p>Let’s say we want to fetch a user’s name and email:</p>
+        <pre>
+<code>
+query {
+  user(id: "1") {
+    name
+    email
+  }
+}
+</code>
+    </pre>
+        <p>
+          The serverwill return only the <code>name</code> and
+          <code>email</code> for the user with the specified ID (in this case,
+          <code>id: "1"</code>), no extra fields.
+        </p>
+      </section>
+      <section class="main-section" id="What_are_mutations?">
+        <header><h2>What are mutations?</h2></header>
+        <p>
+          A <strong>mutation</strong> is how you send changes to the server
+          (like creating, updating, or deleting data). In a traditional REST
+          API, you might use HTTP verbs like <code>POST</code>,
+          <code>PUT</code>, or <code>DELETE</code> to modify data. With GraphQL,
+          you use mutations.
+        </p>
+
+        <h3>How mutations work</h3>
+        <ul>
+          <li>Mutations allow you to modify the server’s data.</li>
+          <li>
+            After the data is modified, the server will return the updated data,
+            so the client can be sure the operation was successful.
+          </li>
+        </ul>
+
+        <h3>Example</h3>
+        <p>
+          Suppose you want to update a user’s email address. You would use a
+          mutation like this:
+        </p>
+        <pre>
+<code>
+mutation {
+  updateUserEmail(id: "1", email: "newemail@example.com") {
+    id
+    email
+  }
+}
+</code>
+    </pre>
+        <p>
+          This mutation takes the user <code>id</code> and the new
+          <code>email</code> and returns the updated <code>id</code> and
+          <code>email</code> once the mutation is complete.
+        </p>
+      </section>
+      <section class="main-section" id="What_are_subscriptions?">
+        <header><h2>What are subscriptions?</h2></header>
+        <p>
+          <strong>Subscriptions</strong> are a way for your application to
+          listen for real-time updates from the server. For example, you might
+          want to receive notifications when a new message is posted to a chat
+          room or when a stock price changes.
+        </p>
+
+        <h3>How subscriptions work</h3>
+        <ul>
+          <li>
+            Subscriptions stay open and keep sending data to the client whenever
+            there’s a change. It’s similar to how WebSockets work.
+          </li>
+          <li>
+            You subscribe to a specific event, and when that event happens, the
+            server sends the updated data back to the client.
+          </li>
+        </ul>
+
+        <h3>Example</h3>
+        <p>
+          Imagine you have a chat application, and you want to listen for new
+          messages. You would use a subscription like this:
+        </p>
+        <pre>
+<code>
+subscription {
+  newMessage {
+    content
+    sender
+  }
+}
+</code>
+    </pre>
+        <p>
+          As soon as a new message is posted, the server will send the
+          <code>content</code> and <code>sender</code> of the new message to any
+          clients that are subscribed.
+        </p>
+      </section>
+      <section class="main-section" id="GraphQL_vs._REST">
+        <header><h2>GraphQL vs. REST</h2></header>
+        <p>
+          <strong>REST</strong> and <strong>GraphQL</strong> are both ways to
+          communicate with an API, but they work in very different ways.
+        </p>
+
+        <h3>Key differences</h3>
+        <ul>
+          <li>
+            <strong>Data fetching</strong>:
+            <ul>
+              <li>
+                In <strong>REST</strong>, each resource has its own URL
+                (endpoint), and you often need to make multiple requests to get
+                related data. For example, to get a user's info and their posts,
+                you might need to make two requests:
+                <code>GET /users/1</code> and <code>GET /users/1/posts</code>.
+              </li>
+              <li>
+                In <strong>GraphQL</strong>, you can request all the related
+                data in a single request:
+              </li>
+              <pre><code>
+query {
+  user(id: "1") {
+    name
+    posts {
+      title
+      content
+    }
+  }
+}
+                </code></pre>
+            </ul>
+          </li>
+          <li>
+            <strong>Over-fetching and under-fetching</strong>:
+            <ul>
+              <li>
+                With <strong>REST</strong>, responses often contain too much or
+                too little data.
+              </li>
+              <li>
+                With <strong>GraphQL</strong>, you get exactly what you ask for,
+                no more and no less.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section class="main-section" id="How_to_set_up_a_simple_GraphQL_server">
+        <header><h2>How to set up a simple GraphQL server</h2></header>
+        <p>
+          To use GraphQL, you’ll need a GraphQL server. This server listens for
+          queries and mutations and then responds with the requested data. Let’s
+          set up a very basic server using Apollo Server.
+        </p>
+
+        <h3>Instructions</h3>
+        <ol>
+          <li>
+            Install <strong>Apollo Server</strong> and <strong>GraphQL</strong>:
+            <pre><code>npm install apollo-server graphql</code></pre>
+          </li>
+          <li>
+            Define your GraphQL schema (What data can be queried or modified):
+            <pre><code>
+const { ApolloServer, gql } = require('apollo-server');
+
+const typeDefs = gql\`
+  type User {
+    id: ID!
+    name: String!
+    email: String!
+  }
+
+  type Query {
+    users: [User]
+  }
+\`
+            </code></pre>
+          </li>
+          <li>
+            Create resolvers (Define how to fetch the data for each field):
+            <pre><code>
+const resolvers = {
+  Query: {
+    users: () => [
+      { id: "1", name: "John Doe", email: "john@example.com" }
+    ]
+  }
+};
+            </code></pre>
+          </li>
+          <li>
+            Start the server:
+            <pre><code>
+const server = new ApolloServer({ typeDefs, resolvers });
+
+server.listen().then(({ url }) => {
+  console.log(\`Server ready at \${url}\`);
+});
+            </code></pre>
+          </li>
+        </ol>
+
+        <p>
+          Now your server is running! You can query it using tools like GraphiQL
+          or Apollo Studio to test and explore the API.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1 id="title">Dev Docs feedback survey</h1>
+  <p id="description">Thank you for your feedback! We greatly appreciate you helping to make our Dev Docs experience better.</p>
+  <form id="survey-form">
+    <label for="name" id="name-label">Full name:
+      <input id="name" type="text" placeholder="Type full name here..." required />
+    </label></br>
+    <label for="email" id="email-label">Email:
+      <input id="email" type="email" placeholder="Type email here..." required />
+    </label><br>
+    <label for="number" id="number-label">Hours using Dev Docs per week:
+      <input id="number" type="number" min="0" max="100" placeholder="0"/>
+    </label><br>
+    <label for="dropdwon">Overall rating:
+      <select id="dropdown">
+        <option>(1-5, with 5 being the best)</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>  
+    </label>
+    <p>Would you recommend our Dev Docs to a colleague?</p>
+    <label>
+      <input type="radio" name="user-recommend" value="yes" checked /> Yes
+      <input type="radio" name="user-recommend" value="no" /> No
+    </label>
+    <p>What improvements would you like to see?</p>
+    <label>
+      <input type="checkbox" value="1" /> More tutorials<br>
+      <input type="checkbox" value="2" /> Video guides<br>
+      <input type="checkbox" value="3" /> Interactive learning modules<br>
+      <input type="checkbox" value="4" /> Conceptual content<br>
+    </label>
+    <p>Please leave other comments and feedback below:</p>
+    <label>
+      <textarea placeholder="Type comments here..."></textarea>
+    </label><br>  
+    <input type="submit" id="submit">  
+  </form>  
+</body>      
+</html>  
