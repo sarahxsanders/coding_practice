@@ -1,0 +1,158 @@
+/* Global Styles */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f4f4f4;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    font-family: 'Times New Roman', serif;
+    color: #3b3a36;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #4d4a42;
+  }
+  
+  a:hover {
+    color: #6b5b3b;
+  }
+  
+  /* Navbar Styles */
+  #navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #8a7f68;
+    color: white;
+    padding: 10px 0;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #navbar ul li {
+    margin: 0 20px;
+  }
+  
+  #navbar ul li a {
+    color: white;
+    font-size: 18px;
+  }
+  
+  /* Welcome Section */
+  #welcome-section {
+    height: 100vh;
+    background-color: #d1c8b1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #welcome-section h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: #3e3c30;
+  }
+  
+  /* About Me Section */
+  #about-me {
+    background-color: #e2e0cc;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  #about-me h1 {
+    font-size: 2rem;
+    color: #5b4e3e;
+    line-height: 1.5;
+  }
+  
+  /* Projects Section */
+  #projects {
+    background-color: #f9f7e7;
+    padding: 40px;
+  }
+  
+  #projects h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #6c5b3d;
+  }
+  
+  /* Project Tiles */
+  .project-tile {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #d3c6b4;
+    border: 1px solid #b8a99b;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .project-tile:hover {
+    transform: translateY(-5px);
+  }
+  
+  .project-tile a {
+    font-size: 1.5rem;
+    color: #4e4534;
+    display: block;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .project-tile a:hover {
+    color: #5a4b3a;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #c4b69e;
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
+    color: #4a4a3d;
+  }
+  
+  footer code {
+    font-size: 1.2rem;
+    background-color: #f2f1e1; 
+    padding: 3px 6px;
+    border-radius: 4px;
+  }
+  
+
+  @media (max-width: 600px) {
+    #navbar ul {
+      flex-direction: column;
+    }
+  
+    #welcome-section h1 {
+      font-size: 2.5rem;
+    }
+  
+    #about-me h1 {
+      font-size: 1.5rem;
+    }
+  
+    #projects h1 {
+      font-size: 2rem;
+    }
+  
+    .project-tile a {
+      font-size: 1.2rem;
+    }
+  }
+  
